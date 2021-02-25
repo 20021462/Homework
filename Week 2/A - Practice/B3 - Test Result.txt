@@ -1,0 +1,4 @@
+- Đối với B1 : 
+	+ Các trường hợp n >= 2 sẽ luôn trả về kết quả mong muốn.
+	  Trường hợp n < 2 : sử dụng vòng for hoặc while sẽ cho kết quả mong muốn, trong khi vòng do-while sẽ luôn in ra số 2.
+- Đối với B2 : Mọi k được nhập từ bàn phím đều trả về kết quả mong muốn.

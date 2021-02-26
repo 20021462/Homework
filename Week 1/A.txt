@@ -1,0 +1,105 @@
+1.	Lệnh sau đây làm gì khi grade là một biến kiểu int? Nếu có lỗi cú pháp, hãy sửa lỗi.
+bool isA = (90 <= grade <= 100);
+Giải : 
+Lệnh khai báo một biến tên isA là một số 0 hoặc 1, nếu grade thuộc [90; 100] thì isA = 1, ngược lại thì isA = 0.
+Lệnh đúng là : bool isA = (grade >= 90 && grade <= 100);
+
+2.	Đoạn chương trình sau đây in ra kết quả gì?
+double x = (double) (3/5);
+	cout << x;
+Giải :
+In ra 0.
+
+3.	Tại sao đoạn code dưới đây không in ra 4294967296 = 2^32?
+int x = 65536;
+	long y = x * x;
+	cout << y;
+
+Gợi ý (bôi đen để nhìn thấy): Tích của hai giá trị int được tính là một giá trị int, sau đó mới được đổi thành một giá trị long. Tuy nhiên 65536 * 65536 = 2^32 là giá trị vượt ra ngoài khả năng lưu trữ của số int 32 bit trước khi nó được đổi ra long
+.	Giải :
+	Do giá trị 4294967296 quá lớn với khả năng lưu trữ của biến int.
+
+4.	Biểu thức sau có giá trị gì?
+(Math.sqrt(2) * Math.sqrt(2) == 2)
+Giải :
+Biểu thức = 0 tức False.
+
+5.	Viết một chương trình divideByZero để xem chuyện gì xảy ra khi bạn đem chia một giá trị kiểu int hoặc double cho 0 hoặc lấy đồng dư cho 0.
+Giải : 
+Chương trình sẽ có cảnh báo và không in ra giá trị nào.
+
+6.	Thử xem trình biên dịch nói gì với một chương trình có hàm main chứa đoạn code sau
+int a = 27 * "three";
+hoặc
+double x;
+	cout << x;
+Nếu chuyển dòng khai báo x ra ngoài hàm main thì chuyện gì xảy ra?
+Giải : 
+int a = 27 * "three"; // chương trình báo lỗi do “three” không phải một giá trị int.
+double x;
+cout << x; // in ra 1 giá trị 4.94066e-324 do x chưa được gán giá trị cụ thể
+Nếu chuyển dòng khai báo x ra ngoài thì chương trình lúc này trả về giá trị bằng 0.
+
+
+7.	Đoạn code sau cho output gì?
+int threeInt = 3;
+	int fourInt  = 4;
+	double threeDouble = 3.0;
+	double fourDouble  = 4.0;
+	cout << threeInt / fourInt << endl;
+	cout << threeInt / fourDouble << endl;
+	cout << threeDouble / fourInt << endl;
+	cout << threeDouble / fourDouble << endl;
+Giải :
+Dòng đầu tiên ra 0, ba dòng còn lại là 0.75
+
+8.	Chuyện gì xảy ra nếu ta khai báo hai biến trùng tên trong cùng một khối lệnh (block)? Lấy ví dụ là chương trình có hàm main() với nội dung sau:
+int  arg1;
+	arg1 = -1;
+	int x, y, z;
+	char myDouble = ’5 ’;
+	char arg1 = ’A ’;
+	cout << arg1 << "\n";
+	return 0;
+
+Gợi ý: Hãy thử dịch xem trình biên dịch báo lỗi gì.
+Giải :
+	Chương trình báo lỗi xung đột về định nghĩa của arg1.
+
+9.	Cùng câu hỏi trên với đoạn code sau:
+int arg1;
+	arg1 = -1;
+	{
+	  char arg1 = ’A’; 
+	  cout << arg1 << "\n"; 
+	} 
+	return 0; 
+
+Khi ở bên trong khối lệnh con, định danh arg1 chỉ tới biến arg1 nào?
+Giải :
+	Biến arg1 kiểu char.	
+
+10.	Cùng câu hỏi trên với đoạn code sau:
+int arg1;
+	arg1 = -1;
+	{
+	  char arg1 = ’A’; 
+	} 
+	cout << arg1 << "\n"; 
+	return 0; 
+
+Khi ra khỏi khối lệnh con, định danh arg1 chỉ tới biến arg1 nào?
+	Giải :
+	Biến arg1 kiểu int.
+
+11.	Chuyển đổi nhiệt độ. Dòng lệnh sau có nhiệm vụ đổi từ độ F (Fahrenheit) sang độ C (Celsius). Lệnh đó có gì sai?
+double C = (F - 32) * (5 / 9);
+Giải :
+
+
+12.	Đoạn code sau in ra kết quả gì?
+if (10 > 5); 
+	 else; {           
+	    cout << "Here";
+	 };
+

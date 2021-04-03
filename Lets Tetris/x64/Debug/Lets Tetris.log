@@ -1,3 +1,0 @@
-﻿  main.cpp
-D:\Homework\Lets Tetris\main.cpp(181,89): error C2059: syntax error: ')'
-D:\Homework\Lets Tetris\main.cpp(244,12): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data

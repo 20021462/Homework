@@ -122,7 +122,7 @@ void close()
 
 bool loadBlock()
 {
-	if (!BlockSheet.loadFromFile("Texture/Block.png"))
+	if (!BlockSheet.loadFromFile("texture/Block.png"))
 	{
 		cout << "Failed to load block sheet" << endl;
 		return false;
@@ -160,9 +160,9 @@ bool loadBlock()
 		BlockRect[BLOCK_I].h = 40;
 
 		BlockRect[BLOCK_T].x = 80;
-		BlockRect[BLOCK_T].x = 40;
-		BlockRect[BLOCK_T].x = 40;
-		BlockRect[BLOCK_T].x = 40;
+		BlockRect[BLOCK_T].y = 40;
+		BlockRect[BLOCK_T].w = 40;
+		BlockRect[BLOCK_T].h = 40;
 
 		BlockRect[BLOCK_DEFAULT].x = 120;
 		BlockRect[BLOCK_DEFAULT].y = 40;
@@ -176,18 +176,79 @@ void print()
 {
 	for (int i = 4; i < 24; i++) {
 		for (int j = 0; j < 10; j++) {
-			if (player1Board[i][j] == 1) BlockSheet.render(150 + 40 * j, 50 + 40 * (i - 4), &BlockRect[BLOCK_Z]);
+			if (player1Board[i][j] == 0) continue;
+			if (player1Board[i][j] > BLOCK_TOTAL) BlockSheet.render(150 + 40 * j, 50 + 40 * (i - 4), &BlockRect[player1Board[i][j] - BLOCK_TOTAL]);
+			else BlockSheet.render(150 + 40 * j, 50 + 40 * (i - 4), &BlockRect[player1Board[i][j])
 		}
 	}
+}
+
+void generateBlock(int BlockType)
+{
+	switch (BlockType)
+	{
+		case BLOCK_Z : 
+			player1Board[0][5] = BlockType;
+			player1Board[1][4] = BlockType;
+			player1Board[1][5] = BlockType;
+			player1Board[2][4] = BlockType;
+			break;
+
+		case BLOCK_S:
+			player1Board[0][4] = BlockType;
+			player1Board[1][4] = BlockType;
+			player1Board[1][5] = BlockType;
+			player1Board[2][5] = BlockType;
+			break;
+
+		case BLOCK_J:
+			player1Board[0][5] = BlockType;
+			player1Board[1][5] = BlockType;
+			player1Board[2][5] = BlockType;
+			player1Board[2][4] = BlockType;
+			break;
+
+		case BLOCK_L:
+			player1Board[0][4] = BlockType;
+			player1Board[1][4] = BlockType;
+			player1Board[2][4] = BlockType;
+			player1Board[2][5] = BlockType;
+			break;
+
+		case BLOCK_I:
+			player1Board[0][4] = BlockType;
+			player1Board[1][4] = BlockType;
+			player1Board[2][4] = BlockType;
+			player1Board[3][4] = BlockType;
+			break;
+
+		case BLOCK_O:
+			player1Board[0][4] = BlockType;
+			player1Board[0][5] = BlockType;
+			player1Board[1][4] = BlockType;
+			player1Board[1][5] = BlockType;
+			break;
+
+		case BLOCK_T:
+			player1Board[0][4] = BlockType;
+			player1Board[1][3] = BlockType;
+			player1Board[1][4] = BlockType;
+			player1Board[1][5] = BlockType;
+			break;
+	}
+}
+
+void gravity()
+{
+
 }
 
 int main(int argc, char* args[])
 {
 
-	player1Board[0][5] = 1;
-	player1Board[1][4] = 1;
-	player1Board[1][5] = 1;
-	player1Board[2][4] = 1;
+	srand(time(0));
+	int tmp = rand() % 7 + 1;
+	generateBlock(tmp);
 
 	if (!initSDL())
 	{
@@ -195,7 +256,7 @@ int main(int argc, char* args[])
 	}
 	else
 	{
-		if (!Board.loadFromFile("Texture/Board.png"))
+		if (!Board.loadFromFile("texture/Board.png"))
 		{
 			cout << "Failed to load board" << endl;
 		}

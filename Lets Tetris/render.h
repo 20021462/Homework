@@ -2,6 +2,8 @@
 #include <SDL_image.h>
 #include <iostream>
 #include <iomanip>
+#include <stdlib.h>
+#include <ctime>
 
 using namespace std;
 
@@ -10,6 +12,7 @@ SDL_Renderer* mainRenderer = NULL;
 
 enum BlockType
 {
+	EMPTY,
 	BLOCK_Z,
 	BLOCK_S,
 	BLOCK_J,
@@ -60,4 +63,7 @@ const int BOARD_HEIGHT = 24;
 int player1Board[BOARD_HEIGHT][BOARD_WIDTH] = { 0 };
 
 void print();
+
+void generateBlock(int BlockType);
+
 #pragma once
